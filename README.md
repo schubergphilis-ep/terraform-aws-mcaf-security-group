@@ -13,13 +13,13 @@ Terraform module to manage an AWS Security Group.
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.9 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 5.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 6.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 5.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 6.0 |
 
 ## Modules
 
@@ -41,6 +41,7 @@ No modules.
 | <a name="input_description"></a> [description](#input\_description) | Description of the security group. | `string` | `null` | no |
 | <a name="input_egress_rules"></a> [egress\_rules](#input\_egress\_rules) | Security group egress rules. | <pre>map(object({<br/>    cidr_ipv4                    = optional(list(string))<br/>    cidr_ipv6                    = optional(list(string))<br/>    description                  = string<br/>    from_port                    = optional(number)<br/>    ip_protocol                  = optional(string, "-1")<br/>    prefix_list_id               = optional(string)<br/>    referenced_security_group_id = optional(string)<br/>    to_port                      = optional(number)<br/>  }))</pre> | `{}` | no |
 | <a name="input_ingress_rules"></a> [ingress\_rules](#input\_ingress\_rules) | Security group ingress rules. | <pre>map(object({<br/>    cidr_ipv4                    = optional(list(string))<br/>    cidr_ipv6                    = optional(list(string))<br/>    description                  = string<br/>    from_port                    = optional(number)<br/>    ip_protocol                  = optional(string, "-1")<br/>    prefix_list_id               = optional(string)<br/>    referenced_security_group_id = optional(string)<br/>    to_port                      = optional(number)<br/>  }))</pre> | `{}` | no |
+| <a name="input_region"></a> [region](#input\_region) | The AWS region where resources will be created; if omitted the default provider region is used | `string` | `null` | no |
 | <a name="input_revoke_rules_on_delete"></a> [revoke\_rules\_on\_delete](#input\_revoke\_rules\_on\_delete) | Instruct Terraform to revoke all of the security group attached ingress and egress rules before deleting the group itself. | `bool` | `false` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | A map of tags to assign on all resources. | `map(string)` | `{}` | no |
 | <a name="input_timeouts"></a> [timeouts](#input\_timeouts) | Define custom maximum timeout for creating and deleting the security group. | <pre>object({<br/>    create = optional(string, "10m")<br/>    delete = optional(string, "15m")<br/>  })</pre> | `{}` | no |
