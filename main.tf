@@ -59,6 +59,7 @@ locals {
 resource "aws_security_group" "default" {
   #checkov:skip=CKV2_AWS_5: "Ensure that Security Groups are attached to another resource" - False positive.
 
+  region                 = var.region
   description            = var.description
   name_prefix            = var.name_prefix
   revoke_rules_on_delete = var.revoke_rules_on_delete
@@ -78,6 +79,7 @@ resource "aws_security_group" "default" {
 resource "aws_vpc_security_group_egress_rule" "default" {
   for_each = local.egress_rules
 
+  region                       = var.region
   cidr_ipv4                    = each.value.cidr_ipv4
   cidr_ipv6                    = each.value.cidr_ipv6
   description                  = each.value.description
@@ -93,6 +95,7 @@ resource "aws_vpc_security_group_egress_rule" "default" {
 resource "aws_vpc_security_group_ingress_rule" "default" {
   for_each = local.ingress_rules
 
+  region                       = var.region
   cidr_ipv4                    = each.value.cidr_ipv4
   cidr_ipv6                    = each.value.cidr_ipv6
   description                  = each.value.description

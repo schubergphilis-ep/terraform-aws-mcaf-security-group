@@ -63,6 +63,12 @@ variable "name_prefix" {
   description = "Name prefix of the security group."
 }
 
+variable "region" {
+  type        = string
+  default     = null
+  description = "The AWS region where resources will be created; if omitted the default provider region is used"
+}
+
 variable "revoke_rules_on_delete" {
   type        = bool
   default     = false
